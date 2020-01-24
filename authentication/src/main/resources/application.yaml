@@ -10,7 +10,7 @@ spring:
   # Database
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/todo-manager
+    url: jdbc:postgresql://localhost:5432/todo-auth
     username: postgres
     password: root
   # JPA properties
