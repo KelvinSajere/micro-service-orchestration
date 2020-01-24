@@ -1,0 +1,39 @@
+# Spring Boot configuration
+spring:
+  profiles:
+    active: development
+  # # Security configuration
+  # security:
+  #   user:
+  #     name: user
+  #     password: user
+  # Database
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/todo-manager
+    username: postgres
+    password: root
+  # JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: none # When you launch the application for the first time - switch "none" at "create"
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    # open-in-view: false
+    generate-ddl: false
+# Logger configuration
+logging:
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+  level:
+    org.springframework: info
+    org.hibernate: debug
+# Server configuration
+server:
+  port: 8080 #set your port
+jwt:
+  secret: ${JWT_SECRET}
+  header: Authorization
+  expiry: 4
+  app_name: authentication-service
