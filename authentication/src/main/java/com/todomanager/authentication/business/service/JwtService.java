@@ -36,8 +36,8 @@ public class JwtService {
         return this.getAllClaimsFromToken(token).getSubject();
     }
 
-    private Date getIssuedAtDateFromToken(String token) {
-        return this.getAllClaimsFromToken(token).getIssuedAt();
+    private Date getExpirationDateFromToken(String token) {
+        return this.getAllClaimsFromToken(token).getExpiration();
     }
 
     public String generateToken(UserImp user) {
@@ -56,8 +56,8 @@ public class JwtService {
     public boolean validateToken(String token, UserImp userDetails) {
         try {
             String username = getUsernameFromToken(token);
-            Date issuedDate = getIssuedAtDateFromToken(token);
-            return (issuedDate.before(new Date()) && username.equals(userDetails.getUsername()));
+            Date expirationDate = getExpirationDateFromToken(token);
+            return (expirationDate.after(new Date()) && username.equals(userDetails.getUsername()));
         } catch (Exception e) {
             return false;
         }
