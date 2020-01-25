@@ -51,7 +51,7 @@ $router->delete('user/{id}', function ($id) use ($userController) {
     return $userController->deleteUser($id);
 });
 
-$router->put('user', function (Request $request) use ($userController) {
+$router->patch('user', function (Request $request) use ($userController) {
 
     return $userController->updateUser(new TodoUser($request->all()));
 });
